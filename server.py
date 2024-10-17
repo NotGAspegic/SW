@@ -5,7 +5,26 @@ import threading
 HOST = '127.0.0.1'
 PORT = 1234 # You can use any port between 0 to 65535
 LISTENER_LIMIT = 5
+active_clients = [] # List of all currently connected users
 
+
+
+def client_handler(client):
+    
+    # Server will listen for client message that will
+    # Contain the username
+    while 1:
+
+        username = client.recv(2048).decode('utf-8')
+        if username != '':
+            active_clients.append((username, client))
+            prompt_message = "SERVER~" + f"{username} added to the chat"
+            send_messages_to_all(prompt_message)
+            break
+        else:
+            print("Client username is empty")
+
+    threading.Thread(target=listen_for_messages, args=(client, username, )).start()
 
 # Main function
 def main():
