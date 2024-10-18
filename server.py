@@ -7,6 +7,16 @@ PORT = 1234 # You can use any port between 0 to 65535
 LISTENER_LIMIT = 5
 active_clients = [] # List of all currently connected users
 
+# Function to send message to a single client
+def send_message_to_client(client, message):
+
+    client.sendall(message.encode())
+
+def send_messages_to_all(message):
+    
+    for user in active_clients:
+
+        send_message_to_client(user[1], message)
 
 
 def client_handler(client):
