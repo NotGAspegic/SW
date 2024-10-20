@@ -5,6 +5,26 @@ import threading
 HOST = '127.0.0.1'
 PORT = 1234
 
+
+
+
+def listen_for_messages_from_server(client):
+
+    while 1:
+
+        message = client.recv(2048).decode('utf-8')
+        if message != '':
+            username = message.split("~")[0]
+            content = message.split('~')[1]
+
+            add_message(f"[{username}] {content}")
+            
+        else:
+            messagebox.showerror("Error", "Message recevied from client is empty")
+
+
+
+
 # main function
 def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
