@@ -5,7 +5,13 @@ import threading
 HOST = '127.0.0.1'
 PORT = 1234
 
-
+def send_message():
+    message = message_textbox.get()
+    if message != '':
+        client.sendall(message.encode())
+        message_textbox.delete(0, len(message))
+    else:
+        messagebox.showerror("Empty message", "Message cannot be empty")
 
 
 def listen_for_messages_from_server(client):
