@@ -5,6 +5,36 @@ import threading
 HOST = '127.0.0.1'
 PORT = 1234
 
+
+
+
+
+
+def connect():
+
+    # try except block
+    try:
+
+        # Connect to the server
+        client.connect((HOST, PORT))
+        print("Successfully connected to server")
+        add_message("[SERVER] Successfully connected to the server")
+    except:
+        messagebox.showerror("Unable to connect to server", f"Unable to connect to server {HOST} {PORT}")
+
+    username = username_textbox.get()
+    if username != '':
+        client.sendall(username.encode())
+    else:
+        messagebox.showerror("Invalid username", "Username cannot be empty")
+
+    threading.Thread(target=listen_for_messages_from_server, args=(client, )).start()
+
+    username_textbox.config(state=tk.DISABLED)
+    username_button.config(state=tk.DISABLED)
+
+
+
 def send_message():
     message = message_textbox.get()
     if message != '':
