@@ -1,12 +1,20 @@
 # import required modules
 import socket
 import threading
+import tkinter as tk
+from tkinter import scrolledtext
+from tkinter import messagebox
 
 HOST = '127.0.0.1'
 PORT = 1234
 
-
-
+DARK_GREY = '#121212'
+MEDIUM_GREY = '#1F1B24'
+OCEAN_BLUE = '#464EB8'
+WHITE = "white"
+FONT = ("Helvetica", 17)
+BUTTON_FONT = ("Helvetica", 15)
+SMALL_FONT = ("Helvetica", 13)
 
 
 
