@@ -18,6 +18,11 @@ SMALL_FONT = ("Helvetica", 13)
 
 
 
+def add_message(message):
+    message_box.config(state=tk.NORMAL)
+    message_box.insert(tk.END, message + '\n')
+    message_box.config(state=tk.DISABLED)
+
 def connect():
 
     # try except block
