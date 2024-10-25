@@ -1,4 +1,3 @@
-# import required modules
 import socket
 import threading
 import tkinter as tk
@@ -17,6 +16,8 @@ BUTTON_FONT = ("Helvetica", 15)
 SMALL_FONT = ("Helvetica", 13)
 
 
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 
 def add_message(message):
     message_box.config(state=tk.NORMAL)
@@ -24,11 +25,7 @@ def add_message(message):
     message_box.config(state=tk.DISABLED)
 
 def connect():
-
-    # try except block
     try:
-
-        # Connect to the server
         client.connect((HOST, PORT))
         print("Successfully connected to server")
         add_message("[SERVER] Successfully connected to the server")
@@ -74,7 +71,6 @@ def listen_for_messages_from_server(client):
 
 
 
-# main function
 def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
