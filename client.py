@@ -5,7 +5,7 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 
 HOST = '127.0.0.1'
-PORT = 1234
+PORT = 4444
 
 DARK_GREY = '#121212'
 MEDIUM_GREY = '#1F1B24'
@@ -15,9 +15,7 @@ FONT = ("Helvetica", 17)
 BUTTON_FONT = ("Helvetica", 15)
 SMALL_FONT = ("Helvetica", 13)
 
-
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
 
 def add_message(message):
     message_box.config(state=tk.NORMAL)
@@ -26,6 +24,7 @@ def add_message(message):
 
 def connect():
     try:
+
         client.connect((HOST, PORT))
         print("Successfully connected to server")
         add_message("[SERVER] Successfully connected to the server")
@@ -43,8 +42,6 @@ def connect():
     username_textbox.config(state=tk.DISABLED)
     username_button.config(state=tk.DISABLED)
 
-
-
 def send_message():
     message = message_textbox.get()
     if message != '':
@@ -52,9 +49,6 @@ def send_message():
         message_textbox.delete(0, len(message))
     else:
         messagebox.showerror("Empty message", "Message cannot be empty")
-
-
-
 
 root = tk.Tk()
 root.geometry("600x600")
@@ -94,9 +88,6 @@ message_box.config(state=tk.DISABLED)
 message_box.pack(side=tk.TOP)
 
 
-
-
-
 def listen_for_messages_from_server(client):
 
     while 1:
@@ -111,18 +102,9 @@ def listen_for_messages_from_server(client):
         else:
             messagebox.showerror("Error", "Message recevied from client is empty")
 
-
-
-
 def main():
-    client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-
-    try:
-        client.connect((HOST,PORT))
-        print("Successfully connected to server")
-    except:
-        print(f"Unable to connect to server {HOST}{PORT}")
+    root.mainloop()
     
 if __name__ == '__main__':
     main()
