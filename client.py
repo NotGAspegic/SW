@@ -7,6 +7,8 @@ from tkinter import messagebox
 HOST = '127.0.0.1'
 PORT = 4444
 
+
+
 DARK_GREY = '#121212'
 MEDIUM_GREY = '#1F1B24'
 OCEAN_BLUE = '#464EB8'
@@ -87,6 +89,7 @@ message_box = scrolledtext.ScrolledText(middle_frame, font=SMALL_FONT, bg=MEDIUM
 message_box.config(state=tk.DISABLED)
 message_box.pack(side=tk.TOP)
 
+#DOESNT WORK SOMETHING IS WRONG
 
 def listen_for_messages_from_server(client):
 
