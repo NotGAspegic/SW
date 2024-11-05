@@ -2,7 +2,7 @@ import socket
 import threading
 
 HOST = '127.0.0.1'
-PORT = 4444
+PORT = 4442
 LISTENER_LIMIT = 5
 active_clients = []
 
