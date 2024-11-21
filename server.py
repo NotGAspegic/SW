@@ -18,7 +18,7 @@ def listen_for_messages(client, username):
             send_messages_to_all(final_msg)
 
         else:
-            print(f"The message send from client {username} is empty")
+            print(f"The message sent from client {username} is empty")
 
 
 
